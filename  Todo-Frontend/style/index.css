@@ -1,0 +1,473 @@
+/* ===== Import Roboto Mono Font ===== */
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;700&display=swap');
+
+/* ===== Reset & Base Styles ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto Mono', monospace;
+    margin: 0;
+    min-height: 100vh;
+    padding: 20px;
+    position: relative;
+    background: #f0f4f8;
+}
+
+/* ===== Background Image ===== */
+.app-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("https://images.pexels.com/photos/457881/pexels-photo-457881.jpeg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: -1;
+}
+
+/* ===== Water Overlay for Bubbles ===== */
+.water {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.bubble {
+    position: absolute;
+    bottom: -100px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(6px);
+    box-shadow:
+            inset -5px -5px 10px rgba(255,255,255,0.4),
+            inset 5px 5px 10px rgba(0,0,0,0.2);
+    animation: rise linear infinite;
+}
+
+@keyframes rise {
+    0% {
+        transform: translateY(0) scale(0.8);
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-120vh) scale(1.2);
+        opacity: 0;
+    }
+}
+
+/* ===== Container ===== */
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 10;
+}
+
+header {
+    text-align: center;
+    color: white;
+    margin-bottom: 30px;
+}
+
+h1 {
+    font-family: 'Roboto Mono', monospace;
+    font-weight: 700;
+    font-size: 2.5em;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+}
+
+.subtitle {
+    font-family: 'Roboto Mono', monospace;
+    font-weight: 400;
+    font-size: 1.1em;
+    opacity: 0.9;
+}
+
+/* ===== Main Card ===== */
+.main-card {
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    overflow: hidden;
+}
+
+/* ===== Add Todo Section ===== */
+.add-todo-section {
+    opacity: 0.8;
+    padding: 30px;
+    background: linear-gradient(90deg, rgba(0, 60, 189, 1) 0%, rgba(5, 37, 179, 1) 35%, rgba(41, 220, 240, 1) 100%);
+    color: white;
+    font-family: 'Roboto Mono', monospace;
+}
+
+.input-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 500;
+}
+
+input[type="text"],
+textarea,
+select {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    font-family: 'Roboto Mono', monospace;
+    background: rgba(255,255,255,0.9);
+    transition: all 0.3s;
+}
+
+input[type="text"]:focus,
+textarea:focus,
+select:focus {
+    outline: none;
+    background: white;
+    box-shadow: 0 0 0 3px rgba(255,255,255,0.3);
+}
+
+textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+/* ===== Buttons ===== */
+.btn {
+    padding: 12px 30px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    font-family: 'Roboto Mono', monospace;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.btn-primary {
+    background: white;
+    color: #667eea;
+    width: 100%;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.btn-success {
+    background: #48bb78;
+    color: white;
+}
+
+.btn-danger {
+    background: #f56565;
+    color: white;
+}
+
+.btn-secondary {
+    background: #718096;
+    color: white;
+}
+
+.btn-success:hover,
+.btn-danger:hover,
+.btn-secondary:hover {
+    opacity: 0.9;
+    transform: translateY(-2px);
+}
+
+/* ===== Filter Section ===== */
+.filter-section {
+    padding: 20px 30px;
+    background: #f7fafc;
+    border-bottom: 1px solid #e2e8f0;
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.filter-btn {
+    padding: 8px 20px;
+    border: 2px solid darkblue;
+    background: white;
+    color: darkblue;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-weight: 600;
+    font-family: 'Roboto Mono', monospace;
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+    background: darkblue;
+    color: white;
+}
+
+/* ===== Todos Section ===== */
+.todos-section {
+    padding: 30px;
+}
+
+.stats {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 25px;
+    flex-wrap: wrap;
+}
+
+.stat-card {
+    flex: 1;
+    min-width: 150px;
+    padding: 15px;
+    border-radius: 10px;
+    text-align: center;
+    font-family: 'Roboto Mono', monospace;
+}
+
+.stat-card.total {
+    background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(9, 9, 121, 1) 35%, rgba(0, 212, 255, 1) 100%);
+    color: white;
+}
+
+.stat-card.active {
+    background: linear-gradient(90deg, rgba(84, 255, 241, 1) 0%, rgba(38, 235, 120, 1) 35%, rgba(0, 255, 153, 1) 100%);
+    color: white;
+}
+
+.stat-card.completed {
+    background: linear-gradient(90deg, rgba(250, 0, 200, 1) 0%, rgba(237, 7, 210, 1) 35%, rgba(0, 247, 255, 1) 100%);
+    color: white;
+}
+
+.stat-number {
+    font-size: 2em;
+    font-weight: 700;
+}
+
+.stat-label {
+    font-size: 0.9em;
+    opacity: 0.9;
+    margin-top: 5px;
+}
+
+.todo-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.todo-item {
+    background: #f7fafc;
+    border-radius: 12px;
+    padding: 20px;
+    display: flex;
+    gap: 15px;
+    align-items: start;
+    transition: all 0.3s;
+    border-left: 4px solid #cbd5e0;
+    font-family: 'Roboto Mono', monospace;
+}
+
+.todo-item:hover {
+    transform: translateX(5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.todo-item.completed {
+    opacity: 0.7;
+    border-left-color: #48bb78;
+}
+
+.todo-item.priority-HIGH {
+    border-left-color: #f56565;
+}
+
+.todo-item.priority-MEDIUM {
+    border-left-color: #ed8936;
+}
+
+.todo-item.priority-LOW {
+    border-left-color: #4299e1;
+}
+
+.todo-checkbox {
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    margin-top: 3px;
+}
+
+.todo-content {
+    flex: 1;
+}
+
+.todo-title {
+    font-size: 1.2em;
+    font-weight: 500;
+    color: #2d3748;
+    margin-bottom: 5px;
+}
+
+.todo-item.completed .todo-title {
+    text-decoration: line-through;
+}
+
+.todo-description {
+    color: #718096;
+    margin-bottom: 8px;
+}
+
+.todo-meta {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 10px;
+}
+
+.badge {
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 0.85em;
+    font-weight: 500;
+    font-family: 'Roboto Mono', monospace;
+}
+
+.badge-priority {
+    background: #edf2f7;
+    color: #2d3748;
+}
+
+.badge-priority.HIGH {
+    background: #fed7d7;
+    color: #c53030;
+}
+
+.badge-priority.MEDIUM {
+    background: #feebc8;
+    color: #c05621;
+}
+
+.badge-priority.LOW {
+    background: #bee3f8;
+    color: #2c5282;
+}
+
+.todo-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.todo-actions .btn {
+    padding: 8px 16px;
+    font-size: 14px;
+}
+
+/* ===== Empty State ===== */
+.empty-state {
+    text-align: center;
+    padding: 60px 20px;
+    color: #718096;
+    font-family: 'Roboto Mono', monospace;
+}
+
+.empty-state-icon {
+    font-size: 4em;
+    margin-bottom: 15px;
+}
+
+/* ===== Loading Spinner ===== */
+.loading {
+    text-align: center;
+    padding: 40px;
+    color: #667eea;
+    font-size: 1.2em;
+    font-family: 'Roboto Mono', monospace;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+.spinner {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    border: 3px solid #e2e8f0;
+    border-top-color: darkblue;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2em;
+    }
+
+    .filter-section {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .todo-actions {
+        flex-direction: column;
+    }
+
+    .todo-actions .btn {
+        width: 100%;
+    }
+
+}
+h1 {
+    font-family: 'Roboto Mono', monospace;
+    font-weight: 1000;
+    font-size: 2.5em;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+    display: inline-block;
+    cursor: pointer;
+    position: relative;
+
+    /* Animated Gradient Text */
+    background: #041c87;
+    background: linear-gradient(90deg, rgba(4, 28, 135, 1) 0%, rgba(51, 38, 235, 1) 35%, rgba(15, 0, 0, 1) 100%);
+    background-size: 600% 600%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradientMove 8s ease infinite;
+    transition: all 0.5s ease;
+}
+
+/* Gradient Animation Keyframes */
+@keyframes gradientMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Hover Effect */
+h1:hover {
+    transform: scale(1.2) rotate(-2deg);
+    text-shadow: 4px 4px 25px rgba(0,0,0,0.5);
+}
