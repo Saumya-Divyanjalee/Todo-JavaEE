@@ -1,4 +1,4 @@
-package lk.ijse.aad;
+package lk.ijse.aad.filter;
 
 import jakarta.servlet.Filter;
 import jakarta.servlet.FilterChain;

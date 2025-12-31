@@ -1,4 +1,7 @@
-package lk.ijse.aad;
+package lk.ijse.aad.dao;
+
+import lk.ijse.aad.util.DBConnection;
+import lk.ijse.aad.model.Todo;
 
 import java.sql.*;
 import java.util.ArrayList;

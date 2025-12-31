@@ -1,4 +1,4 @@
-package lk.ijse.aad;
+package lk.ijse.aad.model;
 
 import java.sql.Timestamp;
 

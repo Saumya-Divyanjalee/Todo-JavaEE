@@ -1,4 +1,4 @@
-package lk.ijse.aad;
+package lk.ijse.aad.util;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

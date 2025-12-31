@@ -13,7 +13,7 @@
     <!-- CORS Filter (Optional - already handled in servlet) -->
     <filter>
         <filter-name>CorsFilter</filter-name>
-        <filter-class>lk.ijse.aad.CorsFilter</filter-class>
+        <filter-class>lk.ijse.aad.filter.CorsFilter</filter-class>
     </filter>
 
     <filter-mapping>
